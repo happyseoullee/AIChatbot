@@ -3,206 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./index.css" />
     <title>AIChatBot</title>
 </head>
 <body>
     <div class="main-page">
-        <div class="left-bar">
-            <br>
-            <div class="flex-box1">
-              <img class="left-bar-user-icon" alt="" src="./resources/user_icon.png"/>
-              <span id="idToInsert"></span>
-              <button class="login-btn" id="loginBtn" onclick="openLoginPopup()">
-     		  로그인
-    	      </button>
-            </div>
-            <div class="flex-box2">
-                <div class="chatroom">채팅방 목록</div>
-                <button class="addchatroom-btn" id="addchatroomBtn" onclick="openPopup()">
-                    <img class="addchatroom-img" alt="" src="./resources/addChatroom_icon.png"/>
-                </button>
-            </div>
-            <div class="chatroom-list" id="chatroomList">   
-                <div class="flex-box3">
-                    채팅방
-                </div>
-            </div>
-        </div>
-        <div class="right-bar">
-            <div class="flex-box4">
+            <div class="box1">
                 AIChatBot
             </div>
-
-            <!-- <input type="text" id="question" name="question" placeholder="질문을 입력하세요"> -->
-            <!-- <button onclick="submitData()">Submit</button> -->
-
             <div class="chatting-div">
                 <div class="bot-chat">
-                    <p class="message">안녕하세요. AIChatBot입니다. 궁금한 내용을 입력하세요.</p>                    
+                    <p class="message">Hello. This is AIChatBot. What do you want to know?</p>                    
                 </div>
     	     <div class="my-chat">
                     <pre class="message" id="latestData"></pre>
-			<p class="message">안녕하세요</p>
+			<p class="message">Hello</p>
               </div>
               <div class="bot-chat">
-                    <pre class="message" id="generatedAnswer"></pre>
+                    <pre class="message" id="generatedAnswer">Answer</pre>
                </div>
             </div>
-    
-            <div class="enterChat-div">
-                <div class="flex-box5">
-                    <img class="pencil-icon" alt="" src="./resources/pencil_icon.png" />
-                    <input type="text" class="input-userMsg" id="question" name="question" placeholder="메세지를 입력해주세요">
+            <div class="writting-box">
+                <div class="box3">
+                    <input type="text" class="input-userMsg" id="question" name="question" placeholder="  Ask something">
                     <button class="send-usrMsg-btn" id="sendUsrMsgBtn" onclick="submitData()">
-                        <img src="resources/send_message_icon.png" alt="Send Message" width="30" height="30" right="100">
+                        <span class="material-symbols-outlined">send</span>
                     </button>
                 </div>
             </div>      
-        </div>
     </div>
 
-        <!-- 채팅방 추가 창 레이어 팝업으로 띄우기 -->
-        <div class="overlay" id="overlay"></div>    
-        <div class="popup" id="popup">
-            <span class="close-btn" onclick="closePopup()">&times;</span>
-            <h2>AIChatBot</h2>
-            <form id="addChatroomForm">
-                <input type="text" id="pinNum" name="pinNum" class="popup-input" required placeholder="PIN 번호를 입력해주세요">
-                <input type="text" id="chatRoomName" name="chatRoomName" class="popup-input" required placeholder="채팅방 이름을 설정해주세요">
-                <button class="addChatroom-btn" onclick="addChatroom()">
-                    <img src="./resources/send_message_icon.png" width="50" height="50" right="100">
-                </button>
-            </form>
-        </div>
-        <!-- 로그인 추가 창 레이어 팝업으로 띄우기 -->
-        <div class="overlay" id="login-overlay"></div>    
-        <div class="popup" id="login-popup">
-            <span class="close-btn" onclick="closeLoginPopup()">&times;</span>
-            <h2>AIChatBot</h2>
-            <form id="loginForm">
-                <input type="text" id="username" name="username" class="popup-input" required placeholder="아이디를 입력해주세요">
-                <input type="password" id="password" name="password" class="popup-input" required placeholder="비밀번호를 입력해주세요">
-                <button class="addChatroom-btn" onclick="login()">
-                    <img src="./resources/send_message_icon.png" width="50" height="50" right="100">
-                </button>
-            </form>
-        </div>
-
-
-    <label for="pin">PIN:</label>
+    <!-- 질문, 답 받아올 id모음 -->
+    <!-- <label for="pin">PIN:</label> -->
     <!-- <input type="text" id="pin" name="pin"> -->
-    <br>
-    <label for="question">Question:</label>
+    <!-- <label for="question">Question:</label>-->
     <!-- <input type="text" id="question" name="question"> -->
-    <br>
     <!-- <button onclick="submitData()">Submit</button> -->
-    <h2>Latest Data:</h2>
     <!-- <pre id="latestData"></pre> -->
-    <h2>Generated Answer:</h2>
     <!-- <pre id="generatedAnswer"></pre> -->
 
     <script>
-        // 창넓이, 높이 구하기
+        // 반응형 관련
         var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
         document.documentElement.style.setProperty('--windowWidth', windowWidth + 'px');
         document.documentElement.style.setProperty('--windowHeight', windowHeight + 'px');
-    
-        // 텍스트 길이만큼 회색 반환
-        function getBackgroundColor(length) {
-            var grayValue = Math.min(length, 255); // 최대값은 255
-            return "rgb(213, 200, 193)"; // R, G, B 값 모두 동일하게 설정하여 회색 생성
-        }
 
-//채팅방추가 버튼 후 액션
-document.getElementById("addchatroomBtn").addEventListener("click", function() {
-    // 새로운 div 요소 생성
-    var newDiv = document.createElement("div");
-    // "abc" 클래스를 추가
-    newDiv.classList.add("flex-box3");
-    // 생성된 div에 텍스트 추가
-    var textNode = document.createTextNode("New Div");
-    newDiv.appendChild(textNode);
-    // 생성된 div를 container 요소의 자식으로 추가
-    document.getElementById("chatroomList").appendChild(newDiv);
-});
-
-        // 팝업 부분
-        function openPopup() {
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('popup').style.display = 'block';
-        }
-        function openLoginPopup() {
-             var buttonText = document.getElementById('loginBtn').innerText;
-             if (buttonText === "로그인") {
-                 document.getElementById('login-overlay').style.display = 'block';
-                 document.getElementById('login-popup').style.display = 'block';
-             } else {
-                 alert("로그아웃되었습니다.");
-                 document.getElementById("loginBtn").innerText = '로그인';
-       		 document.getElementById("idToInsert").innerText = '';
-             }
-        }
-       function closePopup() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('pinNum').value = ''; // PIN 번호 입력 필드 초기화
-            document.getElementById('chatRoomName').value = ''; // 채팅방 이름 입력 필드 초기화
-            //window.location.href = '../index.html'
-        }
-       function closeLoginPopup() {
-            document.getElementById('login-overlay').style.display = 'none';
-            document.getElementById('login-popup').style.display = 'none';
-            document.getElementById('username').value = ''; // PIN 번호 입력 필드 초기화
-            document.getElementById('password').value = ''; // 채팅방 이름 입력 필드 초기화
-            //window.location.href = '../index.html'
-        }
-        function addChatroom() {
-            // 채팅방 이름과 PIN 번호 가져오기
-            var chatRoomName = document.getElementById("chatRoomName").value;
-            var pinNum = document.getElementById("pinNum").value;
-
-            // 입력된 값이 비어있는지 확인
-            if (chatRoomName.trim() === "" || pinNum.trim() === "") {
-            alert("채팅방 이름과 PIN 번호를 입력해주세요.");
-            return;}
-
-            // 새로운 div 요소 생성
-            var newDiv = document.createElement("div");
-            // "flex-box3" 클래스를 추가
-            newDiv.classList.add("flex-box3");
-            // 생성된 div에 텍스트 추가 (채팅방 이름 사용)
-            var textNode = document.createTextNode(chatRoomName);
-            newDiv.appendChild(textNode);
-            // 생성된 div를 chatroomList 요소의 자식으로 추가
-            document.getElementById("chatroomList").appendChild(newDiv);
-   
-            closePopup();
-        }
-        function login() {
-            alert("로그인 테스트");
-            // ID 가져오기
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            // 입력된 값이 비어있는지 확인
-            if (username.trim() === "" || password.trim() === "") {
-                 alert("ID와 비밀번호를 입력해주세요.");
-            return;}
-           // ID표시해주기
-           document.getElementById("idToInsert").innerText = username;
-           // 로그아웃 표시
-           document.getElementById("loginBtn").innerText = '로그아웃';
-
-           closeLoginPopup();
-        }
-
-
-        // submit 관련 부분
+        // Submit
         function submitData() {
             var pinValue = '임의의 PIN값';
-            //var pinValue = document.getElementById('pin').value;
             var questionValue = document.getElementById('question').value;
 
             // API Gateway 엔드포인트 URL
@@ -233,7 +84,6 @@ document.getElementById("addchatroomBtn").addEventListener("click", function() {
                 alert('Error lambda1. Please try again.');
             });
         }
-
 
        // Lambda2 호출 (Lambda1 호출 후에 실행되어야 함)
        function fetchDataFromSecondApi() {
