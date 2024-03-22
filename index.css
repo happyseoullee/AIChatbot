@@ -4,132 +4,13 @@
   --left-bar-lower: 10%;
   --chatroom-list-height: calc(100%-var(--left-bar-lower)-var(--left-bar-middle));
 }
-
 .main-page {    
-  background-color: #6710c2;
+  background-color: #F7F5F4;
   width: var(--windowWidth);
   height: var(--windowHeight);
   overflow: hidden;
-}  
-.left-bar {
-  position: fixed;
-  width: 20%;  
-  height: 100%;
-  background-color: #F7F5F4;  
-  font-size: 20px;
-  font-weight: 1000;
-}  
-.right-bar {
-  position: fixed;
-  left: 20%;  
-  width: 80%;  
-  height: 100%;   
-  background-color: #F7F5F4;  
-}  
-.gray-line {  
-  position: fixed;
-  top: var(--left-bar-upper);
-  background-color: #DADADA;
-  width: 100%;
-  height: 1.5px;  
 }
-
-/* gray-line 안에 있는 로그인 부분 */
-.flex-box1 {
-  height: var(--left-bar-upper);
-  display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  justify-content: space-between;
-  align-items: center;
-}
-.left-bar-user-icon {
-  width: 60px;
-  height: 60px;
-}
-.login-btn {
-  cursor: pointer;
-  background-color: #7CBEFE;
-  border-width: 0;
-  width: 30%;
-  height: 40%;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 1000;
-}
-#loginBtn:active {
-  background-color: #FFC69B; /* 클릭 시 배경색 변경 */
-} 
-
-/* gray-line 안에 있는 채팅방 추가 부분 */
-.flex-box2 {
-  height: var(--left-bar-middle);
-  display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  justify-content: space-between;
-  align-items: center;
-}
-.chatroom {
-  position: relative;
-  top: 3%;
-}
-.addchatroom-img{ 
-  width: 50px;
-  height: 50px;
-}  
-.addchatroom-btn {
-  position: relative;
-  top: 3%;
-  width: 50px;
-  height: 50px;
-  background-color: transparent; 
-  border: none; 
-  padding: 0;
-  cursor: pointer;
-  border-radius: 50%;
-}
-#addchatroomBtn:active {
-  background-color: #FFC59B; /* 클릭 시 배경색 변경 */
-} 
-
-/* gray-line 안에 있는 채팅방 부분*/
-.chatroom-list {
-  display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  height: 76%;
-  width: 100%;
-  overflow: scroll;
-}
-.flex-box3 {
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(180deg, #f2d5d4, rgba(244, 230, 224, 0));
-  display: flex;
-  align-items: center;
-  padding: 5px 0px 5px 5px;
-  justify-content: flex-start;
-}
-
-.chatroom-name{
-  margin-right : 0;
-}
-
-/* 페이지 상단 로고+ChitChatBot */
-.flex-box4 {
-  width: 100%;
-  height: var(--left-bar-upper);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 20px;
-  font-weight: 1000;
-  padding-left: 20px;
-}
-
-/* 대화내용이 보여지는 부분 */
-.chatting-div{
+.chatting-box{
   background-color: #F7F5F4;
   width: 100%;
   height: 75%;
@@ -137,10 +18,15 @@
   flex-direction: column;
   overflow: scroll;
 }
-.chat-icon {
-  margin-right: 10px;
-  width: 45px;
-  height: 40px;
+.box1 {
+  width: 100%;
+  height: var(--left-bar-upper);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 1000;
+  padding-left: 20px;
 }
 .bot-chat {
   width: 40%;
@@ -154,7 +40,7 @@
 }
 .my-chat{
   width: 40%;
-  background-color: #CBCACA;
+  background-color: #7CBEFE;
   margin-top: 20px;
   margin-right: 10px;
   padding: 10px;
@@ -176,46 +62,22 @@
   display:flex;
   flex-direction: column;  
 }
-.inform-message{
-  width: auto;
-  height: 40px;
-  background-color: #D5C8C1;
-  margin: 3px;
-  /* padding:10px; */
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border: none;  
-}
-#defaultMessageBtn1:active,
-#defaultMessageBtn2:active,
-#defaultMessageBtn3:active {
-  background-color: #c2ab9deb; /* 클릭 시 배경색 변경 */
-}
-
-/* 채팅입력 창 */
-.enterChat-div{
-  /* position: absolute; */
+.writting-box{
   width:100%;
   height:15%;
   display: flex;
   justify-content: center;
 }
-.flex-box5 { 
+.box3 { 
   position: absolute;    
   width: 50%;
   bottom: 10px;
   height: 50px;
-  background-color: #FBE5D9;
+  background-color: #CBCACA;
   border-radius: 5px;
   display: flex;  
   justify-content: space-between;
   align-items: center;
-}
-
-.pencil-icon {
-  width: 40px;
-  height: 40px;
 }
 
 .input-userMsg {
@@ -235,4 +97,3 @@
   position: relative;
   left: 5px;
 }
-
