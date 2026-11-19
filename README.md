@@ -2,7 +2,7 @@
 
 ![aws](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
- <img src="images/01.png" width="800" alt="Project Preview">
+ <img src="images/01.png" width="900" alt="Project Preview">
  <img src="images/02.png" width="800" alt="Project Preview">
  <img src="images/03.png" width="800" alt="Project Preview">
  <img src="images/04.png" width="800" alt="Project Preview">
