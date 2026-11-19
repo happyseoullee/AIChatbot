@@ -1,14 +1,27 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header" />
-
-
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&random=false&width=435&lines=Hello!+This+is+AI+Chatbot+Service+from+Seoul)](https://git.io/typing-svg)
-### Serverless AI Chatbot Project on AWS
-
-24.3.17 Completed Front-end/Back-end (yet connected with Bedrock)
-
-24.3.24 Developing AI-Server...
+<p align="center" >
 
 ![aws](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hi240)](https://github.com/anuraghazra/github-readme-stats)
-<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
+ <img src="images/01.png" width="800" alt="Project Preview">
+ <img src="images/02.png" width="800" alt="Project Preview">
+ <img src="images/03.png" width="800" alt="Project Preview">
+ <img src="images/04.png" width="800" alt="Project Preview">
+ <img src="images/05.png" width="800" alt="Project Preview">
+ <img src="images/06.png" width="800" alt="Project Preview">
+ <img src="images/07.png" width="800" alt="Project Preview">
+ <img src="images/08.png" width="800" alt="Project Preview">
+ <img src="images/09.png" width="800" alt="Project Preview">
+ <img src="images/10.png" width="800" alt="Project Preview">
+ <img src="images/11.png" width="800" alt="Project Preview">
+ <img src="images/12.png" width="800" alt="Project Preview">
+ <img src="images/13.png" width="800" alt="Project Preview">
+ <img src="images/14.png" width="800" alt="Project Preview">
+ <img src="images/15.png" width="800" alt="Project Preview">
+ <img src="images/16.png" width="800" alt="Project Preview">
+
+Development History
+  
+March.17.24 Completed the initial frontend and backend implementation, including integration with Amazon Bedrock.
+
+March.24.24 Continued development of the AI server.
+</p>
